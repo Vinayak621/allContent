@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NDVI Plot</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f1f1f1;
+      }
+
+      .card {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .card-header {
+        background-color: #28a745;
+        color: #f1f1f1;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px 0;
+        border-radius: 10px 10px 0 0;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .navigation a {
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 8px 15px;
+        border-radius: 40px;
+        transition: 0.3s;
+        transition-property: background;
+        display: block;
+        color: #0c0c0c;
+      }
+      .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+      header .navigation a:not(:last-child) {
+        margin-right: 30px;
+      }
+      .navigation a:hover {
+        background: #168116;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px; /* Added margin-top */
+      }
+      #check {
+        z-index: 3;
+        display: none;
+      }
+      img {
+        display: block;
+        margin-top: 20px;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="check" />
+    <div class="navigation">
+      <a href="/">Home</a>
+      <h2></h2>
+      <a href="/calculate">Carbon Offset </a>
+      <a href="/mappage">Deforestation Map </a>
+      <a href="/green_tax_credit">Green Tax Credits</a>
+      <a href="/predict">Predictor</a>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="card">
+      <div class="card-header">NDVI plot</div>
+      <form action="/graph" method="POST">
+        <label for="start_year">Start Year:</label>
+        <input
+          type="number"
+          id="start_year"
+          name="start_year"
+          min="1999"
+          max="2016"
+          required
+        />
+
+        <label for="end_year">End Year:</label>
+        <input
+          type="number"
+          id="end_year"
+          name="end_year"
+          min="1999"
+          max="2016"
+          required
+        />
+
+        <label for="latitude">Latitude:</label>
+        <input
+          type="number"
+          id="latitude"
+          name="latitude"
+          step="0.0001"
+          required
+        />
+
+        <label for="longitude">Longitude:</label>
+        <input
+          type="number"
+          id="longitude"
+          name="longitude"
+          step="0.0001"
+          required
+        />
+
+        <input type="submit" value="Generate Plot" />
+      </form>
+      <div class="result-text">
+        <p style="text-align: justify">
+          The NDVI (Normalized Difference Vegetation Index) is a numerical
+          indicator that measures the health and density of vegetation. It
+          provides valuable insights into the amount of green vegetation present
+          in an area. The NDVI values range from 0 to 1, where higher values
+          indicate healthier and denser vegetation.
+        </p>
+        <p style="text-align: justify">
+          In the generated plot, the x-axis represents the years from the start
+          year to the end year provided by the user. The y-axis represents the
+          NDVI values. Peaks in the plot indicate periods of high vegetation
+          density, while dips indicate periods of lower vegetation density.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NDVI Plot Result</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0f5f0;
+      }
+
+      h1 {
+        text-align: center;
+        color: #228b22;
+      }
+
+      .result-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .result-image {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .no-data-message {
+        text-align: center;
+        color: #888;
+      }
+
+      .additional-text {
+        color: #228b22;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="result-container">
+      <h1>NDVI Plot Result</h1>
+      <p>Location: {{ location_name }}</p>
+
+      {% if plot_data %}
+      <img class="result-image" src="{{ plot_data }}" alt="NDVI Plot" />
+      {% else %}
+      <p class="no-data-message">No plot data available.</p>
+      {% endif %}
+
+      <p class="additional-text">Thank you for using the NDVI Plotting tool!</p>
+    </div>
+  </body>
+</html>
